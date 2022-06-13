@@ -440,7 +440,7 @@ const sendOTPVerificationEmail = async({_id,email},res) => {
     try{
 const otp = `${Math.floor(1000 + Math.random() * 9000)}`;
 //mail option
-const mailOption = {
+const mailOptions = {
     from:"padmaja.patil551632@gmail.com",
     to:email,
     subject:"Verify Your E-mail",
@@ -449,7 +449,7 @@ const mailOption = {
 };
 
 //hash the otp
-const saltRounds= 10;
+const saltRounds=10;
 
 const hashedOTP = await bcrypt.hash(otp, saltRounds);
 const newOTPVerification = await new UserOTPVerfication({
